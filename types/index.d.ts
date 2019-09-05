@@ -1,5 +1,5 @@
 import Vue from "vue";
-import ViewerJS from "viewerjs";
+import ViewerJS from "@photocreate/viewerjs";
 
 declare namespace Viewer {
   export interface InstallationOptions {
