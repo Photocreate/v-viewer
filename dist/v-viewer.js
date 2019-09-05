@@ -257,7 +257,7 @@ var Component = __webpack_require__(8)(
   /* cssModules */
   null
 )
-Component.options.__file = "D:\\Workspaces\\Web\\Git\\v-viewer\\src\\component.vue"
+Component.options.__file = "/Users/shin/dev/v-viewer/src/component.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] component.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -322,51 +322,68 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return debounce; });
 
 function throttle(delay, noTrailing, callback, debounceMode) {
-	var timeoutID;
+  var timeoutID;
+  var cancelled = false;
 
-	var lastExec = 0;
+  var lastExec = 0;
 
-	if (typeof noTrailing !== 'boolean') {
-		debounceMode = callback;
-		callback = noTrailing;
-		noTrailing = undefined;
-	}
+  function clearExistingTimeout() {
+    if (timeoutID) {
+      clearTimeout(timeoutID);
+    }
+  }
 
-	function wrapper() {
+  function cancel() {
+    clearExistingTimeout();
+    cancelled = true;
+  }
 
-		var self = this;
-		var elapsed = Number(new Date()) - lastExec;
-		var args = arguments;
+  if (typeof noTrailing !== 'boolean') {
+    debounceMode = callback;
+    callback = noTrailing;
+    noTrailing = undefined;
+  }
 
-		function exec() {
-			lastExec = Number(new Date());
-			callback.apply(self, args);
-		}
 
-		function clear() {
-			timeoutID = undefined;
-		}
+  function wrapper() {
+    var self = this;
+    var elapsed = Date.now() - lastExec;
+    var args = arguments;
 
-		if (debounceMode && !timeoutID) {
-			exec();
-		}
+    if (cancelled) {
+      return;
+    }
 
-		if (timeoutID) {
-			clearTimeout(timeoutID);
-		}
+    function exec() {
+      lastExec = Date.now();
+      callback.apply(self, args);
+    }
 
-		if (debounceMode === undefined && elapsed > delay) {
-			exec();
-		} else if (noTrailing !== true) {
-			timeoutID = setTimeout(debounceMode ? clear : exec, debounceMode === undefined ? delay - elapsed : delay);
-		}
-	}
 
-	return wrapper;
+    function clear() {
+      timeoutID = undefined;
+    }
+
+    if (debounceMode && !timeoutID) {
+      exec();
+    }
+
+    clearExistingTimeout();
+
+    if (debounceMode === undefined && elapsed > delay) {
+      exec();
+    } else if (noTrailing !== true) {
+      timeoutID = setTimeout(debounceMode ? clear : exec, debounceMode === undefined ? delay - elapsed : delay);
+    }
+  }
+
+  wrapper.cancel = cancel;
+
+  return wrapper;
 }
 
 function debounce(delay, atBegin, callback) {
-	return callback === undefined ? throttle(delay, atBegin, false) : throttle(delay, callback, atBegin !== false);
+  return callback === undefined ? throttle(delay, atBegin, false) : throttle(delay, callback, atBegin !== false);
 }
 
 
@@ -531,8 +548,8 @@ module.exports = function normalizeComponent (
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', [_vm._t("default", null, {
-    images: _vm.images,
-    options: _vm.options
+    "images": _vm.images,
+    "options": _vm.options
   })], 2)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
