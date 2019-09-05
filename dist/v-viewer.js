@@ -346,6 +346,10 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;var _typeof2 =
 
 
   function setStyle(element, styles) {
+    if (!element) {
+      return;
+    }
+
     var style = element.style;
     forEach(styles, function (value, property) {
       if (REGEXP_SUFFIX.test(property) && isNumber(value)) {
