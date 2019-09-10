@@ -89,7 +89,7 @@
     "webpack-merge": "^4.0.0"
   },
   "dependencies": {
-    "@photocreate/viewerjs": "^0.0.3",
+    "@photocreate/viewerjs": "^0.0.4",
     "throttle-debounce": "^2.0.1"
   }
 }
