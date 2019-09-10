@@ -376,6 +376,10 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;var _typeof2 =
 
 
   function addClass(element, value) {
+    if (!element) {
+      return;
+    }
+
     if (!value) {
       return;
     }
@@ -535,8 +539,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;var _typeof2 =
     var _handler = listener;
     type.trim().split(REGEXP_SPACES).forEach(function (event) {
       if (options.once && !onceSupported) {
-        var _element$listeners = element.listeners,
-            listeners = _element$listeners === void 0 ? {} : _element$listeners;
+        var listeners = element ? element.listeners : {};
 
         _handler = function handler() {
           delete listeners[event][listener];
@@ -955,6 +958,10 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;var _typeof2 =
     resetImage: function resetImage() {
       if (this.viewing || this.viewed) {
         var image = this.image;
+
+        if (!image) {
+          return;
+        }
 
         if (this.viewing) {
           this.viewing.abort();
@@ -2381,8 +2388,8 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;var _typeof2 =
       var options = this.options,
           pointers = this.pointers;
       var pointer = pointers[Object.keys(pointers)[0]];
-      var offsetX = pointer.endX - pointer.startX;
-      var offsetY = pointer.endY - pointer.startY;
+      var offsetX = pointer ? pointer.endX - pointer.startX : 0;
+      var offsetY = pointer ? pointer.endY - pointer.startY : 0;
 
       switch (this.action) {
         case ACTION_MOVE:
