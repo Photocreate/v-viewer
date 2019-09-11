@@ -536,6 +536,11 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;var _typeof2 =
 
   function addListener(element, type, listener) {
     var options = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : {};
+
+    if (!element) {
+      return;
+    }
+
     var _handler = listener;
     type.trim().split(REGEXP_SPACES).forEach(function (event) {
       if (options.once && !onceSupported) {
