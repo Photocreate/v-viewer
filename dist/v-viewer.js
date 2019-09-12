@@ -510,6 +510,11 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;var _typeof2 =
 
   function removeListener(element, type, listener) {
     var options = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : {};
+
+    if (!element) {
+      return;
+    }
+
     var handler = listener;
     type.trim().split(REGEXP_SPACES).forEach(function (event) {
       if (!onceSupported) {
@@ -576,6 +581,10 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;var _typeof2 =
 
   function dispatchEvent(element, type, data) {
     var event;
+
+    if (!element) {
+      return false;
+    }
 
     if (isFunction(Event) && isFunction(CustomEvent)) {
       event = new CustomEvent(type, {
@@ -2924,7 +2933,7 @@ var Component = __webpack_require__(8)(
   /* cssModules */
   null
 )
-Component.options.__file = "/Users/shin/dev/v-viewer/src/component.vue"
+Component.options.__file = "/data/v-viewer/src/component.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] component.vue: functional components are not supported with templates, they should use render functions.")}
 
