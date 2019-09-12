@@ -7,10 +7,10 @@
   resolved "https://registry.yarnpkg.com/7zip/-/7zip-0.0.6.tgz#9cafb171af82329490353b4816f03347aa150a30"
   integrity sha1-nK+xca+CMpSQNTtIFvAzR6oVCjA=
 
-"@photocreate/viewerjs@^0.0.5":
-  version "0.0.5"
-  resolved "https://verdaccio.photocreate.jp/@photocreate%2fviewerjs/-/viewerjs-0.0.5.tgz#9837e47010366e5cbeb5c5f81a6a13185923605d"
-  integrity sha512-KqoeaqIUukVC21tWtK1lJayS4wfIXbBZW/HsbnpKABGfuDJQ+THP/Q1R2OZI+zY4JcbzIzjb9mSOD7h3JY5rZg==
+"@photocreate/viewerjs@^0.0.6":
+  version "0.0.6"
+  resolved "https://verdaccio.photocreate.jp/@photocreate%2fviewerjs/-/viewerjs-0.0.6.tgz#3451525d8d512d4c9d7922474fea7c5f98437227"
+  integrity sha512-V81QrsvzC3W+Xn8cXUZOoWaZfNpKpuoU3vsQ5k/SHxsUC01ywEtp6tpuoeCEaBq79JhQrkLkrE9w/1jb3kXqcg==
 
 abab@^1.0.0:
   version "1.0.4"
