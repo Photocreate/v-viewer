@@ -1,6 +1,6 @@
 {
   "name": "@photocreate/v-viewer",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Image viewer component for vue, supports rotation, scale, zoom and so on, based on viewer.js",
   "main": "dist/v-viewer.js",
   "types": "types/index.d.ts",
@@ -89,7 +89,7 @@
     "webpack-merge": "^4.0.0"
   },
   "dependencies": {
-    "@photocreate/viewerjs": "^0.0.5",
+    "@photocreate/viewerjs": "^0.0.6",
     "throttle-debounce": "^2.0.1"
   }
 }
